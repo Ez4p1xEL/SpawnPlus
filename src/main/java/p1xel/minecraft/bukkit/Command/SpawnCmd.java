@@ -37,7 +37,7 @@ public class SpawnCmd implements CommandExecutor {
             }
 
             p.teleport(loc);
-            sender.sendMessage(Locale.getMessage("tp-success").replaceAll("%target%", user.getType()));
+            sender.sendMessage(Locale.getMessage("spawn"));
             return true;
 
         }
