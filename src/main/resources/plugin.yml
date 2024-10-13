@@ -1,0 +1,19 @@
+main: p1xel.minecraft.bukkit.SpawnPlus
+name: SpawnPlus
+version: 1.0
+api-version: 1.13
+commands:
+  spawnplus:
+    aliases: [sp, spawnp, splus]
+    description: Main command
+  spawn:
+    aliases: []
+    description: Spawn point teleporting command
+permissions:
+  spawnplus.admin:
+    default: op
+    description: Main command
+  spawnplus.spawn:
+    default: true
+    description: Spawn point teleporting command
+

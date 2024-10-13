@@ -1,0 +1,46 @@
+# Do not change this
+configuration: 1
+# Language that players receiving
+# Existed languages: en(English), zh_CN(Simplified Chinese), zh_TW(Traditional Chinese)
+locale: en
+#
+#
+#
+#
+#
+settings:
+  # global spawn point
+  # players who have not set the spawn point will teleport to this
+  global:
+    default:
+      enable: true
+      #location:
+    group-spawn:
+      enable: true
+      groups:
+        example:
+          # custom permission node
+          # players who have this permission will join this group
+          permission: spawnplus.group.example
+          # spawn point
+          # please change it in game through command
+          #location:
+        vip:
+          permission: spawnplus.group.vip
+          #location:
+  # local spawn point
+  # players who have set up the local spawn point
+  # will have the highest priority to spawn at their local spawn point
+  local:
+    enable: true
+    # if this is enabled
+    # players who have set up the local spawn point
+    # will only spawn at this location if they are dead in that world
+    single-world-only: true
+    # the spawn point are all saved in spawns.yml
+  # login teleport function
+  # if this is enabled
+  # the login players will be teleported to the above spawn point
+  login-tp: true
+
+# priority of spawn point: local > group > default
