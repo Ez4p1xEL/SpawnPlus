@@ -27,8 +27,6 @@ public class SpawnPlus extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        System.out.println(getConfig().getKeys(true));
-
         getServer().getPluginManager().registerEvents(new DeathTP(), this);
         getServer().getPluginManager().registerEvents(new LoginTP(), this);
         getServer().getPluginCommand("SpawnPlus").setExecutor(new Cmd());

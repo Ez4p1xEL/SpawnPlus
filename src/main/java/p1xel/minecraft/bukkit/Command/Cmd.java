@@ -81,7 +81,6 @@ public class Cmd implements CommandExecutor {
 
                 Player p = (Player) sender;
                 Location loc = Config.getLocation("settings.global.default.location");
-                System.out.println("CMD: " + loc);
                 if (loc == null) {
                     sender.sendMessage(Locale.getMessage("spawn-not-exist"));
                     return true;
