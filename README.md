@@ -7,7 +7,6 @@ A plugin for setting priority of spawn points for player to respawn and login-te
 - spawn priority: local(user) > group > default
 - available to enable tp-login feature.
 - you can set single-world-only function.
-- I highly recommend you to view Wiki.
 
 # Commands
 <img src="https://s2.loli.net/2024/10/13/3SrW5iXakPpvuDA.png">
