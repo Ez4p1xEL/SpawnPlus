@@ -1,6 +1,6 @@
 main: p1xel.minecraft.bukkit.SpawnPlus
 name: SpawnPlus
-version: 1.0
+version: 1.1
 api-version: 1.13
 commands:
   spawnplus:
@@ -10,10 +10,32 @@ commands:
     aliases: []
     description: Spawn point teleporting command
 permissions:
-  spawnplus.admin:
+  spawnplus.reload:
     default: op
-    description: Main command
+    description: Reload configuration
   spawnplus.spawn:
     default: true
     description: Spawn point teleporting command
+  spawnplus.help:
+    default: true
+    description: View help
+  spawnplus.set:
+    default: op
+    description: Set default spawn point
+  spawnplus.set.group:
+    default: op
+    description: Set group spawn point
+  spawnplus.set.local:
+    default: true
+    description: Set user spawn point
+  spawnplus.tp:
+    default: true
+    description: Teleport to default spawn point
+  spawnplus.tp.group:
+    default: true
+    description: Teleport to group spawn point
+  spawnplus.tp.local:
+    default: true
+    description: Teleport to user spawn point
+
 

@@ -30,7 +30,6 @@ public class SpawnManager {
 
             SpawnPlus.getInstance().saveResource("spawns.yml", false);
 
-
         }
 
         upload(file, YamlConfiguration.loadConfiguration(file));
@@ -67,7 +66,6 @@ public class SpawnManager {
     }
 
     public static boolean isExist(String uuid) {
-        System.out.println("IS: "+yaml.isConfigurationSection(uuid));
         return yaml.get(uuid) != null;
     }
 

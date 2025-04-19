@@ -19,10 +19,6 @@ public class Cmd implements CommandExecutor {
     @ParametersAreNonnullByDefault
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!sender.hasPermission("spawnplus.admin")) {
-            sender.sendMessage(Locale.getMessage("no-perm"));
-            return true;
-        }
 
         if (args.length == 0) {
             sender.sendMessage(Locale.getMessage("commands.help").replaceAll("%input%", label));
@@ -33,13 +29,19 @@ public class Cmd implements CommandExecutor {
 
             if (args[0].equalsIgnoreCase("help")) {
 
+                if (!sender.hasPermission("spawnplus.help")) {
+                    sender.sendMessage(Locale.getMessage("no-perm"));
+                    return true;
+                }
+
                 for (String message : Locale.get().getConfigurationSection("commands").getKeys(false)) {
 
-                    message = Locale.getMessage("commands." + message);
-                    message = message.replaceAll("%input%", label);
-                    message = message.replaceAll("%version%", SpawnPlus.getInstance().getDescription().getVersion());
-
-                    sender.sendMessage(message);
+                    if (sender.hasPermission("spawnplus." + message.replaceAll("-", "."))) {
+                        message = Locale.getMessage("commands." + message);
+                        message = message.replaceAll("%input%", label);
+                        message = message.replaceAll("%version%", SpawnPlus.getInstance().getDescription().getVersion());
+                        sender.sendMessage(message);
+                    }
 
                 }
 
@@ -48,6 +50,11 @@ public class Cmd implements CommandExecutor {
             }
 
             if (args[0].equalsIgnoreCase("reload")) {
+
+                if (!sender.hasPermission("spawnplus.reload")) {
+                    sender.sendMessage(Locale.getMessage("no-perm"));
+                    return true;
+                }
 
                 Config.reloadConfig();
                 new Locale().createFile();
@@ -58,6 +65,11 @@ public class Cmd implements CommandExecutor {
             }
 
             if (args[0].equalsIgnoreCase("set")) {
+
+                if (!sender.hasPermission("spawnplus.set")) {
+                    sender.sendMessage(Locale.getMessage("no-perm"));
+                    return true;
+                }
 
                 if (!(sender instanceof Player)) {
                     sender.sendMessage(Locale.getMessage("must-be-player"));
@@ -74,6 +86,11 @@ public class Cmd implements CommandExecutor {
 
             if (args[0].equalsIgnoreCase("tp")) {
 
+                if (!sender.hasPermission("spawnplus.tp")) {
+                    sender.sendMessage(Locale.getMessage("no-perm"));
+                    return true;
+                }
+
                 if (!(sender instanceof Player)) {
                     sender.sendMessage(Locale.getMessage("must-be-player"));
                     return true;
@@ -82,7 +99,7 @@ public class Cmd implements CommandExecutor {
                 Player p = (Player) sender;
                 Location loc = Config.getLocation("settings.global.default.location");
                 if (loc == null) {
-                    sender.sendMessage(Locale.getMessage("spawn-not-exist"));
+                    sender.sendMessage(Locale.getMessage("spawn-not-exist").replaceAll("%group%", "default"));
                     return true;
                 }
                 p.teleport(loc);
@@ -105,6 +122,11 @@ public class Cmd implements CommandExecutor {
             if (args[0].equalsIgnoreCase("set")) {
 
                 if (args[1].equalsIgnoreCase("group")) {
+
+                    if (!sender.hasPermission("spawnplus.set.group")) {
+                        sender.sendMessage(Locale.getMessage("no-perm"));
+                        return true;
+                    }
 
                     if (!(sender instanceof Player)) {
                         sender.sendMessage(Locale.getMessage("must-be-player"));
@@ -133,6 +155,11 @@ public class Cmd implements CommandExecutor {
 
                 if (args[1].equalsIgnoreCase("local")) {
 
+                    if (!sender.hasPermission("spawnplus.set.local")) {
+                        sender.sendMessage(Locale.getMessage("no-perm"));
+                        return true;
+                    }
+
                     if (!(sender instanceof Player)) {
                         sender.sendMessage(Locale.getMessage("must-be-player"));
                         return true;
@@ -159,6 +186,11 @@ public class Cmd implements CommandExecutor {
 
                 if (args[1].equalsIgnoreCase("group")) {
 
+                    if (!sender.hasPermission("spawnplus.tp.group")) {
+                        sender.sendMessage(Locale.getMessage("no-perm"));
+                        return true;
+                    }
+
                     if (!(sender instanceof Player)) {
                         sender.sendMessage(Locale.getMessage("must-be-player"));
                         return true;
@@ -171,7 +203,7 @@ public class Cmd implements CommandExecutor {
 
                             Location loc = Config.getLocation("settings.global.group-spawn.groups." + g + ".location");
                             if (loc == null) {
-                                sender.sendMessage(Locale.getMessage("spawn-not-exist"));
+                                sender.sendMessage(Locale.getMessage("spawn-not-exist").replaceAll("%group%", group));
                                 return true;
                             }
                             Player p = (Player) sender;
@@ -190,6 +222,11 @@ public class Cmd implements CommandExecutor {
                 }
 
                 if (args[1].equalsIgnoreCase("local")) {
+
+                    if (!sender.hasPermission("spawnplus.tp.local")) {
+                        sender.sendMessage(Locale.getMessage("no-perm"));
+                        return true;
+                    }
 
                     if (!(sender instanceof Player)) {
                         sender.sendMessage(Locale.getMessage("must-be-player"));

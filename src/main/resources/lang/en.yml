@@ -23,8 +23,10 @@ destination-incorrect: '&b%plugin% &8> &cThe spawn point you are going to telepo
 function-disabled: '&b%plugin% &8> &cThe function is disabled!'
 wrong-arg: '&b%plugin% &8> &cWrong arguments.'
 player-invalid: '&b%plugin% &8> &cPlayer is offline or invalid!'
+not-enough-money: '&b%plugin% &8> &cYou do not have enough money to teleport in your own spawn point!'
 
 set-success: '&b%plugin% &8> &aThe spawn point is successfully set for &e%target%&a.'
 tp-success: '&b%plugin% &8> &aYou are going to spawn point of &e%target%&a.'
 reload-success: '&b%plugin% &8> &aConfigurations are reloaded successfully!'
 spawn: '&b%plugin% &8> &aYou are teleporting to the spawn point...'
+money-cost: '&b%plugin% &8> &aYou used &e$%money%&a spawning in your own spawn point!'

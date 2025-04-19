@@ -23,8 +23,10 @@ destination-incorrect: '&b%plugin% &8> &c你正在传送的出生点出现了错
 function-disabled: '&b%plugin% &8> &c该功能已关闭!'
 wrong-arg: '&b%plugin% &8> &c错误的参数'
 player-invalid: '&b%plugin% &8> &c玩家不存在或不在线!'
+not-enough-money: '&b%plugin% &8> &c你没有足够的金钱传送至你的个人出生点'
 
 set-success: '&b%plugin% &8> &e%target%&a 的出生点已成功设置'
 tp-success: '&b%plugin% &8> &a正在传送至 &e%target%&a 的出生点.'
 reload-success: '&b%plugin% &8> &a配置文件重载成功!'
 spawn: '&b%plugin% &8> &a正在传送至可用的出生点...'
+money-cost: '&b%plugin% &8> &a你花费了 &e$%money%&a 传送至你的个人出生点'

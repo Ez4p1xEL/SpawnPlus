@@ -31,6 +31,22 @@ public class User {
         return player.getWorld().getName();
     }
 
+    // It must be used if the spawn point is existed.
+    public Location getSpawn(String type) {
+        if (type.equalsIgnoreCase("local")) {
+            return SpawnManager.getLocation(uuid);
+        } else if (type.equalsIgnoreCase("group")) {
+            for (String group : Config.getConfigurationSection("settings.global.group-spawn.groups").getKeys(false)) {
+                if (player.hasPermission(Config.getString("settings.global.group-spawn.groups." + group+".permission"))) {
+                    return Config.getLocation("settings.global.group-spawn.groups." + group + ".location");
+                }
+            }
+        } else if (type.equalsIgnoreCase("default")) {
+            return Config.getLocation("settings.global.default.location");
+        }
+        return null;
+    }
+
     public Location getSpawn() {
         // if local spawn exists
         if (Config.getBool("settings.local.enable")) {

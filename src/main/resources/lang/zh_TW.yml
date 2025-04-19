@@ -23,8 +23,10 @@ destination-incorrect: '&b%plugin% &8> &c你正在傳送的重生點出現了錯
 function-disabled: '&b%plugin% &8> &c該功能已關閉!'
 wrong-arg: '&b%plugin% &8> &c錯誤的參數!'
 player-invalid: '&b%plugin% &8> &c玩家不存在或不在綫!'
+not-enough-money: '&b%plugin% &8> &c你沒有足夠的金錢傳送至你的個人重生點！'
 
 set-success: '&b%plugin% &8> &e%target%&a 的重生點已成功設置'
 tp-success: '&b%plugin% &8> &a正在傳送至 &e%target%&a 的重生點.'
 reload-success: '&b%plugin% &8> &a配置文件重載成功!'
 spawn: '&b%plugin% &8> &a傳送至可用的重生點...'
+money-cost: '&b%plugin% &8> &a你花費了 &e$%money%&a 傳送至你的個人重生點'

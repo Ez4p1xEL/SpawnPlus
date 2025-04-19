@@ -24,6 +24,10 @@ public class Config {
         return config.getInt(path);
     }
 
+    public static double getDouble(String path) {
+        return config.getDouble(path);
+    }
+
     public static void setLocation(String path, Location loc) {
 
         config.set(path+".world", loc.getWorld().getName());
@@ -64,6 +68,18 @@ public class Config {
 
     public static ConfigurationSection getConfigurationSection(String path) {
         return config.getConfigurationSection(path);
+    }
+
+    public static void checkUpdate() {
+        if (getInt("configuration") < 2) {
+
+            SpawnPlus.getInstance().getConfig().set("configuration", 2);
+            SpawnPlus.getInstance().getConfig().set("hooks.Vault", true);
+            SpawnPlus.getInstance().getConfig().set("settings.local.money-cost.amount", 500);
+            SpawnPlus.getInstance().getConfig().set("settings.local.mone-cost.back-to", "default");
+            SpawnPlus.getInstance().reloadConfig();
+
+        }
     }
 
 
