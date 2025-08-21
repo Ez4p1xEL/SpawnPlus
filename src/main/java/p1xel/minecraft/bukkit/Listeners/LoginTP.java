@@ -1,10 +1,12 @@
 package p1xel.minecraft.bukkit.Listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import p1xel.minecraft.bukkit.SpawnPlus;
 import p1xel.minecraft.bukkit.Storage.Config;
 import p1xel.minecraft.bukkit.User;
 
@@ -23,7 +25,7 @@ public class LoginTP implements Listener {
                 return;
             }
 
-            p.teleport(loc);
+            p.teleportAsync(loc);
 
         }
 

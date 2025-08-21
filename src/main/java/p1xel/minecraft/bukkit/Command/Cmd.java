@@ -10,6 +10,7 @@ import p1xel.minecraft.bukkit.SpawnPlus;
 import p1xel.minecraft.bukkit.Storage.Config;
 import p1xel.minecraft.bukkit.Storage.Locale;
 import p1xel.minecraft.bukkit.Storage.SpawnManager;
+import p1xel.minecraft.bukkit.User;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -21,7 +22,26 @@ public class Cmd implements CommandExecutor {
 
 
         if (args.length == 0) {
-            sender.sendMessage(Locale.getMessage("commands.help").replaceAll("%input%", label));
+            if (!sender.hasPermission("spawnplus.spawn")) {
+                sender.sendMessage(Locale.getMessage("no-perm"));
+                return true;
+            }
+
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(Locale.getMessage("must-be-player"));
+                return true;
+            }
+
+            Player p = (Player) sender;
+            User user = new User(p);
+            Location loc = user.getSpawn();
+            if (loc == null) {
+                sender.sendMessage(Locale.getMessage("destination-incorrect"));
+                return true;
+            }
+
+            p.teleportAsync(loc);
+            sender.sendMessage(Locale.getMessage("spawn"));
             return true;
         }
 
@@ -102,7 +122,7 @@ public class Cmd implements CommandExecutor {
                     sender.sendMessage(Locale.getMessage("spawn-not-exist").replaceAll("%group%", "default"));
                     return true;
                 }
-                p.teleport(loc);
+                p.teleportAsync(loc);
                 sender.sendMessage(Locale.getMessage("tp-success").replaceAll("%target%", "default"));
                 return true;
 
@@ -207,7 +227,7 @@ public class Cmd implements CommandExecutor {
                                 return true;
                             }
                             Player p = (Player) sender;
-                            p.teleport(loc);
+                            p.teleportAsync(loc);
                             sender.sendMessage(Locale.getMessage("tp-success").replaceAll("%target%", g));
                             return true;
 
@@ -247,7 +267,7 @@ public class Cmd implements CommandExecutor {
                         return true;
                     }
 
-                    p.teleport(loc);
+                    p.teleportAsync(loc);
                     sender.sendMessage(Locale.getMessage("tp-success").replaceAll("%target%", user));
                     return true;
 

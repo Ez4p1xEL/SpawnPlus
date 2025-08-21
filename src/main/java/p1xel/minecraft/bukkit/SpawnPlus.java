@@ -1,10 +1,10 @@
 package p1xel.minecraft.bukkit;
 
+import com.tcoded.folialib.FoliaLib;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import p1xel.minecraft.bukkit.Command.Cmd;
-import p1xel.minecraft.bukkit.Command.SpawnCmd;
 import p1xel.minecraft.bukkit.Command.TabList;
 import p1xel.minecraft.bukkit.Listeners.DeathTP;
 import p1xel.minecraft.bukkit.Listeners.LoginTP;
@@ -18,6 +18,8 @@ public class SpawnPlus extends JavaPlugin {
     private static SpawnPlus plugin;
     public static SpawnPlus getInstance() { return plugin;}
     private static Economy econ = null;
+    private static FoliaLib foliaLib;
+    public static FoliaLib getFoliaLib() {return foliaLib;}
 
     @Override
     public void onLoad() {
@@ -26,6 +28,7 @@ public class SpawnPlus extends JavaPlugin {
         Config.config = getConfig();
         new Locale().createFile();
         new SpawnManager().createFile();
+        foliaLib = new FoliaLib(this);
     }
 
     @Override
@@ -37,7 +40,6 @@ public class SpawnPlus extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LoginTP(), this);
         getServer().getPluginCommand("SpawnPlus").setExecutor(new Cmd());
         getServer().getPluginCommand("SpawnPlus").setTabCompleter(new TabList());
-        getServer().getPluginCommand("spawn").setExecutor(new SpawnCmd());
 
         if (setupEconomy()) {
             getLogger().info("Vault function has loaded!");
