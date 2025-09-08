@@ -11,7 +11,7 @@ commands:
   tp-group: '&8&l>   &f/%input% tp group <组> &a传送至某个组的出生点'
   tp-local: '&8&l>   &f/%input% tp local <玩家> &a传送至玩家的个人出生点'
   reload: '&8&l>   &f/%input% reload &a重载配置文件'
-  spawn: '&8&l>   &f/spawn &a传送至可用的出生点'
+  spawn: '&8&l>   &f/spawn [玩家] &a传送至可用的出生点'
   space-2: ''
   bar-bot: '&8&m                                                   '
 

@@ -11,7 +11,7 @@ commands:
   tp-group: '&8&l>   &f/%input% tp group <組> &a傳送至某個組的重生點'
   tp-local: '&8&l>   &f/%input% tp local <玩家> &a傳送至玩家的個人重生點'
   reload: '&8&l>   &f/%input% reload &a重載配置文件'
-  spawn: '&8&l>   &f/spawn &a傳送至可用的重生點'
+  spawn: '&8&l>   &f/spawn [玩家] &a傳送至可用的重生點'
   space-2: ''
   bar-bot: '&8&m                                                   '
 

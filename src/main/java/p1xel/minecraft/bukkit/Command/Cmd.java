@@ -21,28 +21,55 @@ public class Cmd implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 
-        if (args.length == 0) {
-            if (!sender.hasPermission("spawnplus.spawn")) {
-                sender.sendMessage(Locale.getMessage("no-perm"));
+        if (args.length <= 1) {
+            Player p;
+            if (args.length == 0) {
+                if (!sender.hasPermission("spawnplus.spawn")) {
+                    sender.sendMessage(Locale.getMessage("no-perm"));
+                    return true;
+                }
+
+                if (!(sender instanceof Player)) {
+                    sender.sendMessage(Locale.getMessage("must-be-player"));
+                    return true;
+                }
+                p = (Player) sender;
+
+                User user = new User(p);
+                Location loc = user.getSpawn();
+                if (loc == null) {
+                    sender.sendMessage(Locale.getMessage("destination-incorrect"));
+                    return true;
+                }
+
+                p.teleportAsync(loc);
+                sender.sendMessage(Locale.getMessage("spawn"));
                 return true;
             }
 
-            if (!(sender instanceof Player)) {
-                sender.sendMessage(Locale.getMessage("must-be-player"));
-                return true;
+            if (args.length == 1) {
+
+                p = Bukkit.getPlayer(args[0]);
+                if (p != null) {
+                    if (!sender.hasPermission("spawnplus.spawn.other")) {
+                        sender.sendMessage(Locale.getMessage("no-perm"));
+                        return true;
+                    }
+                    User user = new User(p);
+                    Location loc = user.getSpawn();
+                    if (loc == null) {
+                        sender.sendMessage(Locale.getMessage("destination-incorrect"));
+                        return true;
+                    }
+
+                    p.teleportAsync(loc);
+                    p.sendMessage(Locale.getMessage("spawn"));
+                    return true;
+                }
+
+
             }
 
-            Player p = (Player) sender;
-            User user = new User(p);
-            Location loc = user.getSpawn();
-            if (loc == null) {
-                sender.sendMessage(Locale.getMessage("destination-incorrect"));
-                return true;
-            }
-
-            p.teleportAsync(loc);
-            sender.sendMessage(Locale.getMessage("spawn"));
-            return true;
         }
 
         if (args.length == 1) {

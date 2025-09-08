@@ -11,7 +11,7 @@ commands:
   tp-group: '&8&l>   &f/%input% tp group <group> &aTeleport to spawn point of group.'
   tp-local: '&8&l>   &f/%input% tp local <player> &aTeleport to spawn point of player.'
   reload: '&8&l>   &f/%input% reload &aReload the configurations.'
-  spawn: '&8&l>   &f/spawn &aTeleport to spawn.'
+  spawn: '&8&l>   &f/spawn [player] &aTeleport to spawn.'
   space-2: ''
   bar-bot: '&8&m                                                   '
 
