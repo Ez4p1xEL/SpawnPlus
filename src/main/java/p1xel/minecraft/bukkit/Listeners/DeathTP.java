@@ -1,7 +1,6 @@
 package p1xel.minecraft.bukkit.Listeners;
 
 import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,7 +24,7 @@ public class DeathTP implements Listener {
         if (SpawnManager.getLocation(uuid)!=null) {
             if (SpawnPlus.getInstance().isVaultEnabled()) {
                 double cost = Config.getDouble("settings.local.money-cost.amount");
-                if (SpawnPlus.getEconomy().getBalance((OfflinePlayer) p) < cost) {
+                if (SpawnPlus.getEconomy().getBalance(p) < cost) {
                     Location result;
                     try {
                         result = user.getSpawn(Config.getString("settings.local.money-cost.back-to"));
