@@ -15,7 +15,9 @@ public class LoginTP implements Listener {
 
         Player p = e.getPlayer();
 
-        if (Config.getBool("settings.login-tp")) {
+        boolean firstJoin = !p.hasPlayedBefore() && Config.getBool("settings.first-join");
+
+        if (firstJoin || Config.getBool("settings.login-tp")) {
 
             Location loc = new User(p).getSpawn();
 

@@ -1,5 +1,5 @@
 # Do not change this
-configuration: 2
+configuration: 3
 # Language that players receiving
 # Existed languages: en(English), zh_CN(Simplified Chinese), zh_TW(Traditional Chinese)
 locale: en
@@ -39,14 +39,16 @@ settings:
     single-world-only: true
     # the spawn point are all saved in spawns.yml
     money-cost:
+      # player needs to spend money (need Vault) to spawn at the local spawn point,
+      # or they will get teleported to the default/group spawn point
       amount: 500.0
       back-to: default
-    # player needs to spend money (need Vault) to spawn at the local spawn point,
-    # or they will get teleported to the default/group spawn point
   # login teleport function
   # if this is enabled
   # the login players will be teleported to the above spawn point
   login-tp: true
+  # Set to true if you want the new joining players to teleport to their spawn points.
+  first-join: true
 
 # priority of spawn point: local > group > default
 
